@@ -1,3 +1,233 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* altura mínima de toda la pantalla */
+  margin: 0;
+}
+
+/* Estilos para el contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Card */
+.card {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones */
+.btn-primary {
+  background-color: #2563eb;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #1e40af;
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #1f2937;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+}
+
+.btn-danger {
+  background-color: #dc2626;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Inputs de formulario */
+.form-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.form-input.error {
+  border-color: #dc2626;
+}
+
+.form-error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+/* Checkbox */
+.checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: #2563eb;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+/* Select */
+.form-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.form-select.error {
+  border-color: #dc2626;
+}
+
+/* Tablas */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+}
+
+th {
+  background-color: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+}
+
+tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Header */
+header {
+  background: linear-gradient(to right, #2563eb, #1e40af);
+  color: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+header nav ul {
+  list-style: none; /* quita los puntitos */
+  padding: 0;       /* elimina el padding por defecto */
+  margin: 0;        /* elimina el margin por defecto */
+  display: flex;
+  gap: 1rem;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background-color: #1f2937;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.min-h-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* altura mínima de toda la ventana */
+}
+
+.main-content {
+  flex: 1; /* ocupa todo el espacio disponible entre header y footer */
+  padding: 2rem 0; /* mantiene tu padding original */
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  header h1 {
+    font-size: 1.875rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1rem;
+  }
+}

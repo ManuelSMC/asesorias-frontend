@@ -1,5 +1,5 @@
 export interface Division {
-  idDivision: number;
+  idDivision?: number;
   nombre: string;
   status: boolean;
   clave: string;

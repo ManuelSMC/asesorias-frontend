@@ -3,32 +3,32 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import Table from '../components/common/Table';
 import Button from '../components/common/Button';
-import type { Division } from '../types';
-import { getAllDivisions, enableDivision, disableDivision, deleteDivision } from '../services/divisionService';
+import type { ProgramaEducativo } from '../types';
+import { getAllProgramas, enablePrograma, disablePrograma, deletePrograma } from '../services/programaService';
 
-const DivisionList: React.FC = () => {
+const ProgramaList: React.FC = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [loadingId, setLoadingId] = useState<number | null>(null);
 
-  const { data: divisions, isLoading, error } = useQuery<Division[], Error>({
-    queryKey: ['divisions'],
-    queryFn: getAllDivisions,
+  const { data: programas, isLoading, error } = useQuery<ProgramaEducativo[], Error>({
+    queryKey: ['programas'],
+    queryFn: getAllProgramas,
   });
 
   const enableMutation = useMutation({
-    mutationFn: enableDivision,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['divisions'] }),
+    mutationFn: enablePrograma,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['programas'] }),
   });
 
   const disableMutation = useMutation({
-    mutationFn: disableDivision,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['divisions'] }),
+    mutationFn: disablePrograma,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['programas'] }),
   });
 
   const deleteMutation = useMutation({
-    mutationFn: deleteDivision,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['divisions'] }),
+    mutationFn: deletePrograma,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['programas'] }),
   });
 
   const handleEnable = async (id: number) => {
@@ -59,39 +59,27 @@ const DivisionList: React.FC = () => {
   };
 
   const columns = [
-    { key: 'idDivision', header: 'ID' },
+    { key: 'idProgramaEducativo', header: 'ID' },
     { key: 'nombre', header: 'Nombre' },
     { key: 'clave', header: 'Clave' },
     { key: 'descripcion', header: 'Descripción' },
-    { key: 'director', header: 'Director' },
+    { key: 'division.nombre', header: 'División' },
     { key: 'status', header: 'Estado' },
   ];
 
-  const actions = (division: Division) => (
+  const actions = (programa: ProgramaEducativo) => (
     <div style={{ display: 'flex', gap: '0.5rem' }}>
-      <Button variant="secondary" onClick={() => navigate(`/divisions/edit/${division.idDivision}`)}>
+      <Button variant="secondary" onClick={() => navigate(`/programas/edit/${programa.idProgramaEducativo}`)}>
         Editar
       </Button>
-      <Button
-        variant="danger"
-        loading={loadingId === division.idDivision}
-        onClick={() => {
-          if (typeof division.idDivision === 'number') {
-            handleDelete(division.idDivision);
-          }
-        }}
-      >
+      <Button variant="danger" loading={loadingId === programa.idProgramaEducativo} onClick={() => handleDelete(programa.idProgramaEducativo)}>
         Eliminar
       </Button>
       <Button
-        loading={loadingId === division.idDivision}
-        onClick={() => {
-          if (typeof division.idDivision === 'number') {
-            division.status ? handleDisable(division.idDivision) : handleEnable(division.idDivision);
-          }
-        }}
+        loading={loadingId === programa.idProgramaEducativo}
+        onClick={() => programa.status ? handleDisable(programa.idProgramaEducativo) : handleEnable(programa.idProgramaEducativo)}
       >
-        {division.status ? 'Deshabilitar' : 'Habilitar'}
+        {programa.status ? 'Deshabilitar' : 'Habilitar'}
       </Button>
     </div>
   );
@@ -103,15 +91,15 @@ const DivisionList: React.FC = () => {
     <div className="container" style={{ padding: '1.5rem' }}>
       <div className="card">
         <h1 style={{ fontSize: '1.875rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '1.5rem' }}>
-          Lista de Divisiones
+          Lista de Programas Educativos
         </h1>
-        <Button style={{ marginBottom: '1.5rem' }} onClick={() => navigate('/divisions/create')}>
-          Crear Nueva División
+        <Button style={{ marginBottom: '1.5rem' }} onClick={() => navigate('/programas/create')}>
+          Crear Nuevo Programa
         </Button>
-        <Table data={divisions || []} columns={columns} actions={actions} />
+        <Table data={programas || []} columns={columns} actions={actions} />
       </div>
     </div>
   );
 };
 
-export default DivisionList;
+export default ProgramaList;
