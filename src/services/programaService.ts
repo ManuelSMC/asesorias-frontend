@@ -37,3 +37,4 @@ export const deletePrograma = async (id: number): Promise<{ success: boolean; me
   const response = await axios.delete(`${API_BASE}/${id}`);
   return response.data;
 };
+
