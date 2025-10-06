@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import DivisionList from './pages/DivisionList';
+import DivisionForm from './pages/DivisionForm';
+import ProgramaList from './pages/ProgramaList';
+import ProgramaForm from './pages/ProgramaForm';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="min-h-screen">
+      <header>
+        <div className="container">
+          <h1>Asesorías UTEQ</h1>
+          <nav>
+            <ul>
+              <li>
+                <a href="/divisions">Divisiones </a>
+              </li>
+              <li>
+                <a href="/programas">Programas Educativos</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <main className="main-content">
+        <Routes>
+          <Route path="/divisions" element={<DivisionList />} />
+          <Route path="/divisions/create" element={<DivisionForm />} />
+          <Route path="/divisions/edit/:id" element={<DivisionForm />} />
+          <Route path="/programas" element={<ProgramaList />} />
+          <Route path="/programas/create" element={<ProgramaForm />} />
+          <Route path="/programas/edit/:id" element={<ProgramaForm />} />
+          <Route path="/" element={<DivisionList />} />
+        </Routes>
+      </main>
+      <footer>
+        <p>© 2025 Asesorías UTEQ</p>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
