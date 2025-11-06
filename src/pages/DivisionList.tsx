@@ -87,7 +87,7 @@ const DivisionList: React.FC = () => {
         loading={loadingId === division.idDivision}
         onClick={() => {
           if (typeof division.idDivision === 'number') {
-            division.status ? handleDisable(division.idDivision) : handleEnable(division.idDivision);
+            void (division.status ? handleDisable(division.idDivision) : handleEnable(division.idDivision));
           }
         }}
       >

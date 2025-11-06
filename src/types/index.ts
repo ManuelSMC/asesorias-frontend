@@ -24,3 +24,11 @@ export interface ProgramaEducativoDTO {
   descripcion: string;
   divisionId: number;
 }
+
+export interface Usuario {
+  idUsuario?: number;
+  nombre: string;
+  password?: string;
+  rol: string;
+  status: number;
+}

@@ -3,6 +3,8 @@ import DivisionList from './pages/DivisionList';
 import DivisionForm from './pages/DivisionForm';
 import ProgramaList from './pages/ProgramaList';
 import ProgramaForm from './pages/ProgramaForm';
+import UsuarioForm from './pages/UsuarioForm';
+import UsuarioList from './pages/UsuarioList';
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
               <li>
                 <a href="/programas">Programas Educativos</a>
               </li>
+              <li>
+                <a href="/usuarios">Gestión de Usuarios</a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -30,6 +35,9 @@ function App() {
           <Route path="/programas" element={<ProgramaList />} />
           <Route path="/programas/create" element={<ProgramaForm />} />
           <Route path="/programas/edit/:id" element={<ProgramaForm />} />
+          <Route path="/usuarios" element={<UsuarioList />} />
+          <Route path="/usuarios/create" element={<UsuarioForm />} />
+          <Route path="/usuarios/edit/:id" element={<UsuarioForm />} />
           <Route path="/" element={<DivisionList />} />
         </Routes>
       </main>

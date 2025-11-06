@@ -1,10 +1,12 @@
+import React from 'react';
+
 interface TableProps<T> {
   data: T[];
   columns: { key: keyof T | string; header: string }[];
   actions?: (item: T) => React.ReactNode;
 }
 
-const Table = <T extends { idDivision?: number; idProgramaEducativo?: number }>({ data, columns, actions }: TableProps<T>) => (
+const Table = <T,>({ data, columns, actions }: TableProps<T>) => (
   <div className="table-container card">
     <table>
       <thead>
@@ -16,8 +18,8 @@ const Table = <T extends { idDivision?: number; idProgramaEducativo?: number }>(
         </tr>
       </thead>
       <tbody>
-        {data.map(item => (
-          <tr key={item.idDivision || item.idProgramaEducativo}>
+        {data.map((item, index) => (
+          <tr key={index}>
             {columns.map(col => (
               <td key={String(col.key)}>
                 {typeof col.key === 'string' && col.key.includes('.') ? 
