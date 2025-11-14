@@ -5,6 +5,8 @@ import ProgramaList from './pages/ProgramaList';
 import ProgramaForm from './pages/ProgramaForm';
 import UsuarioForm from './pages/UsuarioForm';
 import UsuarioList from './pages/UsuarioList';
+import AsesoriaList from './pages/AsesoriaList';
+import AsesoriaForm from './pages/AsesoriaForm'
 
 function App() {
   return (
@@ -23,6 +25,9 @@ function App() {
               <li>
                 <a href="/usuarios">Gestión de Usuarios</a>
               </li>
+              <li>
+                <a href="/asesorias">Asesorías</a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -39,6 +44,9 @@ function App() {
           <Route path="/usuarios/create" element={<UsuarioForm />} />
           <Route path="/usuarios/edit/:id" element={<UsuarioForm />} />
           <Route path="/" element={<DivisionList />} />
+          <Route path="/asesorias" element={<AsesoriaList />} />
+          <Route path="/asesorias/create" element={<AsesoriaForm />} />
+          <Route path="/asesorias/edit/:id" element={<AsesoriaForm />} />
         </Routes>
       </main>
       <footer>
